@@ -1,0 +1,22 @@
+{
+  "name": "react-native-android-last-known-location",
+  "version": "0.0.5",
+  "description": "",
+  "main": "index.android.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhravn/react-native-android-last-known-location.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "android",
+    "location"
+  ],
+  "author": {
+    "name": "hhravn"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/hhravn/react-native-android-last-known-location#readme",
+  "_id": "react-native-android-last-known-location@0.0.1"
+}

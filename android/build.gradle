@@ -1,0 +1,41 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.0'
+  }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "23.0.3"
+
+  defaultConfig {
+    minSdkVersion 16
+    targetSdkVersion 22
+    versionCode 1
+    versionName "1.0"
+  }
+  lintOptions {
+    warning 'InvalidPackage'
+  }
+  sourceSets {
+    }
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+  maven {
+    url  "http://dl.bintray.com/countly/maven"
+  }}
+
+dependencies {
+  provided "com.facebook.react:react-native:0.20.+"
+  compile "com.google.android.gms:play-services-base:10.2.4"
+  compile "com.google.android.gms:play-services-location:10.2.4"
+}

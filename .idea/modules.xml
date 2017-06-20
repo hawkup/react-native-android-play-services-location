@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/0.1.0.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/0.1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.43.4/0.43.4.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.43.4/0.43.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/1.0.0.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/1.0.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/1.0.1.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/1.0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/11.0.1/11.0.1.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/11.0.1/11.0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/23.0.1.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/23.0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/23.4.0.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/23.4.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/25.2.0.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/25.2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/generated/source/buildConfig/buildConfig.iml" filepath="$PROJECT_DIR$/android/app/build/generated/source/buildConfig/buildConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/src/main/main.iml" filepath="$PROJECT_DIR$/android/app/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/generated/source/r/r.iml" filepath="$PROJECT_DIR$/android/app/build/generated/source/r/r.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/r174650.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/r174650.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/build/intermediates/manifests/aapt/release/release.iml" filepath="$PROJECT_DIR$/android/app/build/intermediates/manifests/aapt/release/release.iml" />
+    </modules>
+  </component>
+</project>
