@@ -8,7 +8,7 @@ let {
 
 let ERROR = 'Not available in iOS - use Geolocation Polyfill.';
 
-class RNLastKnownLocation extends Component {
+class PlayServicesLocation extends Component {
   constructor (props) {
     super(props);
     console.log(ERROR);
@@ -17,4 +17,4 @@ class RNLastKnownLocation extends Component {
   getCurrentLocation () { console.error(ERROR) }
 }
 
-module.exports = RNLastKnownLocation;
+module.exports = PlayServicesLocation;

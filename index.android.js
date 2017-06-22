@@ -9,4 +9,4 @@
  */
 
 var { NativeModules } = require('react-native');
-module.exports = NativeModules.RNLastKnownLocation;
+module.exports = NativeModules.PlayServicesLocation;
