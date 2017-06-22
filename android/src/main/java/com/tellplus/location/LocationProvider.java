@@ -98,8 +98,6 @@ public class LocationProvider {
         public void onLocationAvailability(LocationAvailability availability) {
             if(!availability.isLocationAvailable()) {
                 handler.onError(new Exception("Location data is not available."));
-            } else {
-                getLastKnownLocation(this.handler);
             }
         }
     }
