@@ -13,11 +13,11 @@ import java.util.List;
 /**
  * Created by hhravn on 20/06/2017.
  */
-public class RNLastKnownLocation implements ReactPackage {
+public class PlayServicesLocation implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules( ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-                new RNLastKnownLocationModule(reactContext)
+                new PlayServicesLocationModule(reactContext)
         );
     }
     @Override

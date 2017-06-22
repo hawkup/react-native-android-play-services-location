@@ -1,11 +1,11 @@
 {
-  "name": "react-native-android-last-known-location",
-  "version": "0.0.7",
+  "name": "react-native-android-play-services-location",
+  "version": "0.0.1",
   "description": "",
   "main": "index.android.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hhravn/react-native-android-last-known-location.git"
+    "url": "git+https://github.com/hhravn/react-native-android-play-services-location.git"
   },
   "keywords": [
     "react-native",
@@ -17,6 +17,6 @@
     "name": "hhravn"
   },
   "license": "ISC",
-  "homepage": "https://github.com/hhravn/react-native-android-last-known-location#readme",
-  "_id": "react-native-android-last-known-location@0.0.1"
+  "homepage": "https://github.com/hhravn/react-native-android-play-services-location#readme",
+  "_id": "react-native-android-play-services-location@0.0.1"
 }

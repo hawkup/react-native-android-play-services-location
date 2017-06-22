@@ -1,13 +1,13 @@
 
-# react-native-android-last-known-location
+# react-native-android-play-services-location
 
 ## Getting started
 
-`$ npm install react-native-android-last-known-location --save`
+`$ npm install react-native-android-play-services-location --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-android-last-known-location`
+`$ react-native link react-native-android-play-services-location`
 
 ### Manual installation
 
@@ -22,10 +22,10 @@ Not supported.
   - Add `new RNLastKnownLocation()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
-  	include ':react-native-android-last-known-location'
-  	project(':react-native-android-last-known-location').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-android-last-known-location/android')
+  	include ':react-native-android-play-services-location'
+  	project(':react-native-android-play-services-location').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-android-play-services-location/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-android-last-known-location')
+      compile project(':react-native-android-play-services-location')
   	```
