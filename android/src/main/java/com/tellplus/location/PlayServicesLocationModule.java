@@ -1,20 +1,15 @@
 package com.tellplus.location;
 
 import android.location.Location;
-import android.support.annotation.NonNull;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.WritableMap;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 
-import io.reactivex.Single;
-import io.reactivex.observers.DisposableSingleObserver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 /**
@@ -41,9 +36,9 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
         if (!locationProvider.checkPlayServices()) {
             promise.reject("PLAY_SERVICES_ERROR", new Exception(PLAY_SERVICES_ERROR));
         } else {
+            SingleLocationHandler observer = new SingleLocationHandler(promise);
             this.locationProvider
-                    .getLastKnownLocation()
-                    .subscribe(new LocationObserver(promise));
+                    .getLastKnownLocation(observer);
         }
     }
 
@@ -52,22 +47,23 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
         if (!locationProvider.checkPlayServices()) {
             promise.reject("PLAY_SERVICES_ERROR", new Exception(PLAY_SERVICES_ERROR));
         } else {
+            SingleLocationHandler observer = new SingleLocationHandler(promise);
             this.locationProvider
-                    .getCurrentLocation()
-                    .subscribe(new LocationObserver(promise));
+                    .getCurrentLocation(observer);
         }
     }
 
-    class LocationObserver extends DisposableSingleObserver<Location>{
-
+    class SingleLocationHandler implements LocationProvider.LocationHandler {
+        AtomicBoolean resolved = new AtomicBoolean(false);
         private final Promise promise;
 
-        public LocationObserver(Promise promise) {
+        public SingleLocationHandler(Promise promise) {
             this.promise = promise;
         }
 
         @Override
-        public void onSuccess(@io.reactivex.annotations.NonNull Location location) {
+        public void onSuccess(Location location) {
+            if(resolved.getAndSet(true)) return;
             WritableMap result = Arguments.createMap();
 
             WritableMap coords = Arguments.createMap();
@@ -82,7 +78,8 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
         }
 
         @Override
-        public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+        public void onError(Throwable e) {
+            if(resolved.getAndSet(true)) return;
             promise.reject(LOCATION_SERVICES_ERROR, e);
         }
     }
