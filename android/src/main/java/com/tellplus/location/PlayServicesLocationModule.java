@@ -1,15 +1,11 @@
 package com.tellplus.location;
 
-import android.location.Location;
-
-import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.WritableMap;
-
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tellplus.location.request.LocationRequestArgs;
+import com.tellplus.location.response.SingleLocationHandler;
 
 
 /**
@@ -18,8 +14,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
     private final LocationProvider locationProvider;
-    private final String PLAY_SERVICES_ERROR = "Play services not up to date.";
-    private final String LOCATION_SERVICES_ERROR = "Location could not be retrieved.";
 
     public PlayServicesLocationModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -34,53 +28,23 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getLastKnownLocation(final Promise promise) {
         if (!locationProvider.checkPlayServices()) {
-            promise.reject("PLAY_SERVICES_ERROR", new Exception(PLAY_SERVICES_ERROR));
+            promise.reject("PLAY_SERVICES_ERROR", new Exception(Messages.PLAY_SERVICES_ERROR));
         } else {
-            SingleLocationHandler observer = new SingleLocationHandler(promise);
+            SingleLocationHandler observer = new SingleLocationHandler(this, promise);
             this.locationProvider
                     .getLastKnownLocation(observer);
         }
     }
 
     @ReactMethod
-    public void getCurrentLocation(final Promise promise) {
+    public void getCurrentLocation(int timeout, int maxAge, final Promise promise) {
         if (!locationProvider.checkPlayServices()) {
-            promise.reject("PLAY_SERVICES_ERROR", new Exception(PLAY_SERVICES_ERROR));
+            promise.reject("PLAY_SERVICES_ERROR", new Exception(Messages.PLAY_SERVICES_ERROR));
         } else {
-            SingleLocationHandler observer = new SingleLocationHandler(promise);
+            SingleLocationHandler observer = new SingleLocationHandler(this, promise);
             this.locationProvider
-                    .getCurrentLocation(observer);
+                    .getCurrentLocation(observer, new LocationRequestArgs(timeout, maxAge));
         }
     }
 
-    class SingleLocationHandler implements LocationProvider.LocationHandler {
-        AtomicBoolean resolved = new AtomicBoolean(false);
-        private final Promise promise;
-
-        public SingleLocationHandler(Promise promise) {
-            this.promise = promise;
-        }
-
-        @Override
-        public void onSuccess(Location location) {
-            if(resolved.getAndSet(true)) return;
-            WritableMap result = Arguments.createMap();
-
-            WritableMap coords = Arguments.createMap();
-            coords.putDouble("latitude", location.getLatitude());
-            coords.putDouble("longitude", location.getLongitude());
-            coords.putDouble("altitude", location.getAltitude());
-            result.putMap("coords", coords);
-
-            result.putDouble("fixTime", location.getTime());
-
-            promise.resolve(result);
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            if(resolved.getAndSet(true)) return;
-            promise.reject(LOCATION_SERVICES_ERROR, e);
-        }
-    }
 }
