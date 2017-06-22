@@ -4,3 +4,4 @@ android/.idea/
 android/build
 android/.gradle
 *.iml
+.npmrc
