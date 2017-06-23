@@ -29,16 +29,6 @@ public class LocationProvider {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
     }
 
-    public boolean checkPlayServices() {
-        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
-        int result = googleAPI.isGooglePlayServicesAvailable(this.context);
-        if (result != ConnectionResult.SUCCESS) {
-            return false;
-        }
-
-        return true;
-    }
-
     public void getCurrentLocation(LocationHandler observer, LocationRequestArgs args) {
         CurrentLocationTask callback = new CurrentLocationTask(observer);
         mFusedLocationClient.requestLocationUpdates(getLocationRequest(args), callback, null);

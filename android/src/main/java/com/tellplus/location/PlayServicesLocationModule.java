@@ -4,6 +4,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.google.android.gms.common.ConnectionResult;
 import com.tellplus.location.request.LocationRequestArgs;
 import com.tellplus.location.response.SingleLocationHandler;
 
@@ -14,7 +15,6 @@ import com.tellplus.location.response.SingleLocationHandler;
 
 public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
     private final LocationProvider locationProvider;
-
     public PlayServicesLocationModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.locationProvider = new LocationProvider(reactContext);
@@ -27,8 +27,9 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getLastKnownLocation(final Promise promise) {
-        if (!locationProvider.checkPlayServices()) {
-            promise.reject("PLAY_SERVICES_ERROR", new Exception(Messages.PLAY_SERVICES_ERROR));
+        PlayServicesUtil.Result playServiceStatus = PlayServicesUtil.checkPlayServices(this.getReactApplicationContext());
+        if (playServiceStatus.code != ConnectionResult.SUCCESS) {
+            promise.reject("PLAY_SERVICES_ERROR", new Exception(playServiceStatus.message));
         } else {
             SingleLocationHandler observer = new SingleLocationHandler(this, promise);
             this.locationProvider
@@ -36,10 +37,12 @@ public class PlayServicesLocationModule extends ReactContextBaseJavaModule {
         }
     }
 
+
     @ReactMethod
     public void getCurrentLocation(int timeout, int maxAge, final Promise promise) {
-        if (!locationProvider.checkPlayServices()) {
-            promise.reject("PLAY_SERVICES_ERROR", new Exception(Messages.PLAY_SERVICES_ERROR));
+        PlayServicesUtil.Result playServiceStatus = PlayServicesUtil.checkPlayServices(this.getReactApplicationContext());
+        if (playServiceStatus.code != ConnectionResult.SUCCESS) {
+            promise.reject("PLAY_SERVICES_ERROR", new Exception(playServiceStatus.message));
         } else {
             SingleLocationHandler observer = new SingleLocationHandler(this, promise);
             this.locationProvider
