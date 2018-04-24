@@ -36,5 +36,5 @@ repositories {
 
 dependencies {
   provided "com.facebook.react:react-native:+"
-  compile "com.google.android.gms:play-services-location:12+"
+  compile "com.google.android.gms:play-services-location:15+"
 }
